@@ -19,12 +19,15 @@ public class LowestNumber {
 		Arrays.sort(array);
 		System.out.println("sorted array: "+Arrays.toString(array));
 		int res= array[0];
+		int [] array1= new int[1];
+		array1[0]=res;
+
 		System.out.println("the lowest number from the array is: "+res);
 
 		ConnectToSqlDB connectToSqlDB = new ConnectToSqlDB();
 		List<String> lowestValue = new ArrayList<String>();
 		try {
-			connectToSqlDB.insertDataFromArrayToSqlTable(array, "tbl_lowestNumber", "column_lowestNumber");
+			connectToSqlDB.insertDataFromArrayToSqlTable(array1, "tbl_lowestNumber", "ID");
 			lowestValue = connectToSqlDB.readDataBase("tbl_lowestNumber", "column_lowestNumber");
 
 		} catch (Exception e) {
@@ -34,6 +37,7 @@ public class LowestNumber {
 		for(String st:lowestValue){
 			System.out.println(st);
 		}
+
 	}
 
 }

@@ -1,34 +1,112 @@
 Please answer the below Data Structure Questions:
 
 why do we need data structure?
-A.
+A.it is a way to store multiple values in same object
 
 
 What are the various operations that can be performed on different Data Structures?
+A.Insertion, Deletion,Traversal,Searching, and Sorting
+
 List out the areas in which data structures are applied extensively?
+A.data base, and Graphics, Machine learning, data sciences.
+
 what is an Array?
+A. an object that contains multiple values
+
 what is the difference between the Array and ArrayList?
+A. array is static and is fixed length.
+   arraylist is dynamic and is variable length.
+
 what is LinkedList?
-How is an Array different from Linked List?
+A.linked list is a linear data structure, in which the elements are linked using pointers.
+
+How is an ArrayList different from Linked List?
+A.Arraylist is storing the value in a block and linked list stores the value in nodes.
+ linked list is easier and faster
+
 what is queue?
+A. is a linear data structure, and it is collection of order element in FIFO order
+
 what is stack?
+A.is a linear data structure that is used to store collection and object, it is a collection that follows LIFO/FILO order.
+
 what is FIFO and LIFO?
+A. FIFO:first in/first out
+   LIFO: last in/first ou
+
 what is the order of complexity?
+A.Order of complexity is a measure of how long an algorithm would take to complete given an input of size n.
+  Assuming the input  of size N, we can say that the algorithm will finish at O(N), O(N^2), O(N^3), O(N*log(N)) etc.
+
 what is the best case to search an element from an array?
+A.the map is always the best case to search an element from an array.
+
 what is the worst case to search an element from an array?
+A.is searching element one by one until the element is found.
+
 what is tree in data structure?
+A.Tree is a non-linear data structure where data objects are organized in terms of hierarchical relationship
+
 what is graph in data structure?
+A. is a non linear data structure and it is presentation of nodes lined together without specific order.
+
 what is the difference between the HashTable and HashMap?
+A.HashTable is synchronized and HashMap is not synchronized.
+
 What are the major data structures used in the following areas : RDBMS, Network data model and Hierarchical data model.
+A. RDBMS uses Array
+   Network data model uses Graph.
+   Hierarchical data model uses Trees.
+
 How HashMap works in java?
+A. HashMap work in (Key ,Value)
+
 What is ArrayIndexOutOfBoundsException in java? When it occurs?
+A.is an error and it occurs whenever we try to retrieve an element with an index that is out of the array holder.
+
 What are the different ways of copying an array into another array?
+A.Arrays.copy, System.cloun(), and manually
+
 What is difference between an array and a linked list?
+A.An array is a collection of elements of a similar data type.
+  A linked list is a collection of objects known as a node where node consists of two parts
+
 What is DFS and BFS?
+A.DFS: Depth-first search (DFS) is an algorithm for traversing or searching tree or graph data structures.
+  BFS: Breadth-first search is an algorithm for searching a tree data structure for a node that satisfies a given property.
+
 What is Recursion?
+A. Recursion is when a method calls itself.
+
 What are linear and non linear data Structures?
+A.linear:array, stack, queue, linked list.
+  non linear: graphs and trees
+
 What is Big-(O)-notation?
+A.Big O notation is a mathematical notation that describes the limiting behavior of a function
+  when the argument tends towards a particular value or infinity.
+  big O notation is used to classify algorithms according to how their run time
+   or space requirements grow as the input size grows.
+
 Outlined different kind of sorting algorithm with time complexity?
+A.Insertion sorting: is a simple sorting algorithm.The array is virtually split into a sorted and an unsorted part.
+                    Values from the unsorted part are picked and placed at the correct position in the sorted part
+
+  Selection sorting:  is selecting the smallest value and take it to the index.
+
+  Bubble sorting:  is getting two indexes and checks if the right index is less than the left one and swaps the values
+
+  Bucket sorting:  is putting the values is different buckets (for temple from 0-5 in a bucket
+                   nd 6-10 in another 11-15 in an another and so on),sorting the values in each bucket and at the end
+                   gathering the values.
+
+  Marge sorting:  the list of values wil split and then checks 2 values and always take the smallest an reorder the values..
+
+  Heap sorting: is a comparison-based sorting technique based on Binary Heap data structure. It is similar to selection
+                sort where we first find the minimum element and place the minimum element at the beginning.
+                We repeat the same process for the remaining elements.
+
+  Quick sorting:
 
 Draw a table with time complexity in which it will summarize all the data structure feature's advantages and disadvantages.
   a)In terms of Accessing element.

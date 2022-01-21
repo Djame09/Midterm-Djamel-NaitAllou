@@ -1,8 +1,13 @@
 package design;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 import java.util.Scanner;
 
-public class EmployeeInfo {
+public class EmployeeInfo extends empAbstract {
 	
  /*This class can be implemented from Employee interface then add additional methods in EmployeeInfo class.
  * Also, Employee interface can be implemented into an abstract class.So create an Abstract class
@@ -20,7 +25,70 @@ public class EmployeeInfo {
 	/*
 	 * declare few static and final fields and some non-static fields
 	 */
-	static String companyName;
+	private static String companyName;
+	private String name;
+	private int employeeId;
+	private double salary;
+
+	public static void setCompanyName(String companyName) {
+		EmployeeInfo.companyName = companyName;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setEmployeeId(int employeeId) {
+		this.employeeId = employeeId;
+	}
+
+	public void setSalary(double salary) {
+		this.salary = salary;
+	}
+
+	public void setSsn(String ssn) {
+		this.ssn = ssn;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public void setDate_of_birth(String date_of_birth) {
+		this.date_of_birth = date_of_birth;
+	}
+
+	public static String getCompanyName() {
+		return companyName;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public int getEmployeeId() {
+		return employeeId;
+	}
+
+	public double getSalary() {
+		return salary;
+	}
+
+	public String getSsn() {
+		return ssn;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public String getDate_of_birth() {
+		return date_of_birth;
+	}
+
+	private String ssn;
+	private String email;
+	private String date_of_birth;
 	
 	/*
 	 * You must implement the logic for below 2 methods and 
@@ -32,11 +100,15 @@ public class EmployeeInfo {
 	 * you must have multiple constructor.
 	 * Must implement below constructor.
 	 */
+	public EmployeeInfo(){
+
+	}
 	public EmployeeInfo(int employeeId){
-		
+		this.employeeId=employeeId;
 	}
     public EmployeeInfo(String name, int employeeId){
-		
+		this.name=name;
+		this.employeeId=employeeId;
 	}
 	
 	/*
@@ -47,8 +119,17 @@ public class EmployeeInfo {
 	 * So you probably need to send 2 arguments.
 	 * 
 	 */
-	public static int calculateEmployeeBonus(int numberOfYearsWithCompany){
+	public static int calculateEmployeeBonus(double salary, String performance){
 		int total=0;
+		if (performance=="best") {
+			total = (int) (salary * 0.1);
+		}
+		else if(performance=="avrage"){
+			total = (int) (salary * 0.05);
+		}
+		else if(performance=="bad"){
+			total = (int) (salary * 0.02);
+		}
 		return total;
 	}
 	
@@ -58,7 +139,7 @@ public class EmployeeInfo {
 	 * Hints: pension will be 5% of the salary for 1 year, 10% for 2 years with the company and so on.
 	 * 
 	 */
-	public static int calculateEmployeePension(){
+	public static int calculateEmployeePension( int yearWithCompany , double salary) throws ParseException {
 		int total=0;
 		Scanner sc  = new Scanner(System.in);
 		System.out.println("Please enter start date in format (example: May,2015): ");
@@ -67,14 +148,80 @@ public class EmployeeInfo {
 		String todaysDate = sc.nextLine();
         String convertedJoiningDate = DateConversion.convertDate(joiningDate);
         String convertedTodaysDate = DateConversion.convertDate(todaysDate);
+          yearWithCompany=getDifferenceYears(convertedJoiningDate,convertedTodaysDate);
+		 if (yearWithCompany<2){
+			 total= (int) (salary*0.05);
+		 }else if (yearWithCompany==2) {
+			 total = (int) (salary * 0.1);
+		 }if (yearWithCompany>3 && yearWithCompany<=5) {
+			total = (int) (salary * 0.15);
+		}if (yearWithCompany>5) {
+			total = (int) (salary * 0.2);
+		}
 
         //implement numbers of year from above two dates
 		//Calculate pension
 
-
-
 		return total;
 	}
+	public static int getDifferenceYears(String firstDay, String lastDay) throws ParseException {
+
+		SimpleDateFormat format = new SimpleDateFormat("MM/YYYY");
+		String date1 = firstDay;
+		String date2 = lastDay;
+		Date newDate1= format.parse(date1);
+		Date newDate2= format.parse(date2);
+		Calendar a = getTheCalendar(newDate1);
+		Calendar b = getTheCalendar(newDate2);
+		int diff = b.get(Calendar.YEAR) - a.get(Calendar.YEAR);
+		if (a.get(Calendar.MONTH) > b.get(Calendar.MONTH) ||
+				(a.get(Calendar.MONTH) == b.get(Calendar.MONTH) && a.get(Calendar.DATE) > b.get(Calendar.DATE))) {
+			diff--;
+		}
+		return diff;
+	}
+
+
+	public static Calendar getTheCalendar(Date date) {
+		Calendar cal = Calendar.getInstance(Locale.CANADA);
+		cal.setTime(date);
+		return cal;
+	}
+	@Override
+	public void printInfo(){
+		System.out.println("your campany is: "+companyName);
+		System.out.println("employeeId is: "+employeeId);
+		System.out.println("name is: "+name);
+		System.out.println("date of birth is: "+date_of_birth);
+		System.out.println("ssn is: "+ssn);
+		System.out.println("email is: "+email);
+		System.out.println("salary is: $"+salary);
+	}
+	@Override
+	public int employeeId() {
+		return employeeId;
+	}
+
+	@Override
+	public String employeeName() {
+		return name;
+	}
+
+	@Override
+	public void assignDepartment() {
+     System.out.println("you will be working in It department.");
+	}
+
+	@Override
+	public int calculateSalary() {
+		return (int) salary;
+	}
+
+	@Override
+	public void benefitLayout() {
+System.out.println("you are full time employee, so you're eligible for benefits ");
+	}
+
 	private static class DateConversion {
 
 		public DateConversion(Months months){}

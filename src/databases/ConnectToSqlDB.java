@@ -186,12 +186,12 @@ public class ConnectToSqlDB {
   //      for(User user:list){
   //         System.out.println(user.getStName() + " " + user.getStID()+ " " + user.getStDOB());
   //     }
-       // ConnectToSqlDB connectToSqlDB = new ConnectToSqlDB();
-      //  List<String> students = connectToSqlDB.readDataBase("student", "First_Name");
-        //for (String student: students) {
-            //System.out.println(student);
+        ConnectToSqlDB connectToSqlDB = new ConnectToSqlDB();
+       List<String> students = connectToSqlDB.readDataBase("student", "First_Name");
+        for (String student: students) {
+            System.out.println(student);
 
-      //  }
+        }
 
     }
 }
