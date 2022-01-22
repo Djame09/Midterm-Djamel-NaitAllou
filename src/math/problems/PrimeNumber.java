@@ -15,10 +15,10 @@ public class PrimeNumber {
 	 */
 
 	public static void main(String[] args) {
-		int size= findPrimes(2,1000000).size();
-		ArrayList<Integer> sqlprime= findPrimes(2,1000000);
+		int size= findPrimes(2,1000).size();
+		ArrayList<Integer> sqlprime= findPrimes(2,1000);
 		int[] array = sqlprime.stream().mapToInt(i -> i).toArray();
-        System.out.println("The number of element is: "+size+"\n The list of prime numbers is: "+findPrimes(2,1000000));
+        System.out.println("The number of element is: "+size+"\n The list of prime numbers is: "+findPrimes(2,1000));
 		ConnectToSqlDB primNumb=new ConnectToSqlDB();
 		primNumb.insertDataFromArrayToSqlTable(array,"prime_numbers","ID");
 

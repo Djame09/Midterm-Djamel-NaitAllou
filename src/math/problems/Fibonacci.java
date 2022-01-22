@@ -2,7 +2,8 @@ package math.problems;
 
 import java.util.Scanner;
 
-public class Fibonacci {public static int fibonacci(int i) {
+public class Fibonacci {
+    public static int fibonacci(int i) {
     if (i==0) return 0;
     if(i<=2)
         return 1;
